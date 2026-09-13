@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Campus Resource Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Smart Campus Resource Booking System</h1>
+        
+        <div id="auth-controls" style="display:flex; gap:15px; align-items:center;">
+            <span id="user-greeting" style="font-weight:bold;"></span>
+            <button id="login-btn" onclick="login()" style="display:none; margin:0; width:auto;">Login</button>
+            <button id="logout-btn" onclick="logout()" style="display:none; margin:0; width:auto; background-color:#dc3545;">Logout</button>
+        </div>
+    </header>
+
+    <main id="app-main" style="display:none;">
+        <div class="grid-container">
+            <!-- Resources Column -->
+            <div class="column">
+                <section class="card">
+                    <h2>Available Resources</h2>
+                    <button onclick="loadResources()">Refresh Resources</button>
+                    <div id="resources-list"></div>
+                    
+                    <div id="add-resource-form" class="admin-only" style="display:none; margin-top:20px; padding-top:20px; border-top:1px solid #ddd;">
+                        <h3>Register New Resource (Admin)</h3>
+                        <input type="text" id="res-name" placeholder="Name (e.g. Room 101)">
+                        <input type="text" id="res-type" placeholder="Type (e.g. Classroom)">
+                        <input type="number" id="res-capacity" placeholder="Total Capacity">
+                        <button onclick="addResource()">Add Resource</button>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Bookings Column -->
+            <div class="column">
+                <section class="card">
+                    <h2>Book a Resource</h2>
+                    <form id="booking-form" onsubmit="submitBooking(event)">
+                        <select id="book-resource" required>
+                            <option value="">Select Resource...</option>
+                        </select>
+                        <label>Start Time:</label>
+                        <input type="datetime-local" id="book-start" required>
+                        <label>End Time:</label>
+                        <input type="datetime-local" id="book-end" required>
+                        <input type="number" id="book-capacity" placeholder="Capacity Needed (e.g. 1)" required min="1">
+                        <input type="text" id="book-purpose" placeholder="Purpose of booking" required>
+                        <button type="submit">Submit Request</button>
+                    </form>
+                    <p id="booking-message"></p>
+                </section>
+
+                <section class="card">
+                    <h2>All Bookings</h2>
+                    <button onclick="loadBookings()">Refresh Bookings</button>
+                    <div id="bookings-list"></div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="loading-screen" style="text-align:center; padding:50px;">
+        <h2>Loading Application...</h2>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

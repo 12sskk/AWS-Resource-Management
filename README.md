@@ -19,10 +19,6 @@ A fully serverless, centralized platform designed for students and faculty to re
 - **Authentication**: **Amazon Cognito** (User Pools & Identity Provider)
 - **Notifications**: **Amazon SNS** (Simple Notification Service)
 
-## 📋 Pre-configured Accounts
-During deployment, the following accounts are automatically created and verified. Their permanent password is set to **`Password123!`**:
-- **Admin**: `admin@smartcampus.com`
-- **Faculty**: `faculty1@smartcampus.com` through `faculty5@smartcampus.com`
 
 *Note: Anyone else who signs up via the login page will automatically be assigned the **Student** role by the backend.*
 
